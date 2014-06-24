@@ -1,0 +1,38 @@
+apply plugin: 'war'
+apply plugin: 'tomcat'
+
+buildscript {
+	repositories {
+		flatDir {
+			dirs 'lib'
+		}
+		
+	}
+
+	dependencies {
+		classpath group: 'org.gradle', name: 'gradle-tomcat-plugin', version: '1.2.4'
+	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	def tomcatVersion = '7.0.11'
+	tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+		   "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+	tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+		exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+	}
+
+	compile group: 'commons-io', name: 'commons-io', version: '1.4'
+	compile group: 'log4j', name: 'log4j', version: '1.2.15', ext: 'jar'
+}
+
+tomcat {
+    httpPort = 8080
+    httpsPort = 8091
+    enableSSL = false
+}
+.gradle
