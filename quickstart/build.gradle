@@ -35,3 +35,5 @@ tomcat {
     httpsPort = 8091
     enableSSL = false
 }
+
+task stage(dependsOn: ['clean', 'tomcatRunWar'])
