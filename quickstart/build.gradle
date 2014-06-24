@@ -10,7 +10,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath group: 'org.gradle', name: 'gradle-tomcat-plugin', version: '1.2.4'
+		classpath group: 'org.gradle.api.plugins', name: 'gradle-tomcat-plugin', version: '1.2.4'
 	}
 }
 
@@ -35,4 +35,3 @@ tomcat {
     httpsPort = 8091
     enableSSL = false
 }
-.gradle
